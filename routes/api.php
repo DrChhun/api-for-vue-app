@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CoffeeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::group(['prefix' => 'auth'], function(){
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function() {
     Route::apiResource('books',  BookController::class)->except(['exit']);
     Route::apiResource('coffees', CoffeeController::class);
+    Route::apiResource('history', HistoryController::class);
     Route::get('coffees/sell/{id}/{modify}', [CoffeeController::class, 'sell']);
 });

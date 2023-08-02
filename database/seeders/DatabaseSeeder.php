@@ -19,10 +19,12 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Coffee::factory(10)->create();
+        // \App\Models\Coffee::factory(10)->create();
 
-        $this->call([
-            BookSeeder::class,
-        ]);
+        \App\Models\History::factory(1)->create();
+
+        // $this->call([
+        //     BookSeeder::class,
+        // ]);
     }
 }
