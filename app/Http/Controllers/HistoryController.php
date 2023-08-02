@@ -15,14 +15,14 @@ class HistoryController extends Controller
      */
     public function index()
     {   
-        $lastId = History::orderBy('id', 'desc')->first();
-        $table = History::create([
-            'data' => json_encode([
-                'name' => 'laravel',
-                'order_number' => $lastId->id + 1
-            ]),
-            'order_id' => strval($lastId->id + 1)
-        ]);
+        // $lastId = History::orderBy('id', 'desc')->first();
+        // $table = History::create([
+        //     'data' => json_encode([
+        //         'name' => 'laravel',
+        //         'order_number' => $lastId->id + 1
+        //     ]),
+        //     'order_id' => strval($lastId->id + 1)
+        // ]);
 
         return new HistoryCollection(History::all());
     }
@@ -40,7 +40,13 @@ class HistoryController extends Controller
      */
     public function store(StoreHistoryRequest $request)
     {
-        //
+        $lastId = History::orderBy('id', 'desc')->first();
+        History::create([
+            'data' => json_encode($request->data),
+            'order' => '1'
+        ]);
+
+        return response("successfully create", 200);
     }
 
     /**
